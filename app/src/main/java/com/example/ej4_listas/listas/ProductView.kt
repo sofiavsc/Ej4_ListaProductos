@@ -71,7 +71,7 @@ fun ProductView(categoria: String) {
             style = MaterialTheme.typography.titleLarge
         )
 
-        // 🔥 GRID 3 x fila
+        // Fila 3x3 para ver el carrusel 3x3
         LazyVerticalGrid(
             columns = GridCells.Fixed(3),
             modifier = Modifier.padding(8.dp)
