@@ -22,8 +22,8 @@ fun ProductView(categoria: String) {
             Producto("Laptop", "$15,000", R.drawable.laptop, false, false),
             Producto("Audífonos", "$800", R.drawable.headphones, true, false),
             Producto("Tablet", "$5,000", R.drawable.tablet, true, false),
-            Producto("Smartwatch", "$3,000", R.drawable.watch, false, true)
-
+            Producto("Smartwatch", "$3,000", R.drawable.watch, false, true),
+            Producto("Cámara", "$10,000", R.drawable.phone, true, false)
         )
 
         "Ropa" -> listOf(
@@ -31,7 +31,8 @@ fun ProductView(categoria: String) {
             Producto("Jeans", "$800", R.drawable.ropa, false, true),
             Producto("Sudadera", "$600", R.drawable.ropa, true, false),
             Producto("Vestido", "$700", R.drawable.ropa, false, false),
-            Producto("Tenis", "$1200", R.drawable.ropa, true, true)
+            Producto("Tenis", "$1200", R.drawable.ropa, true, true),
+            Producto("Gorra", "$200", R.drawable.ropa, true, false)
         )
 
         "Hogar" -> listOf(
@@ -39,7 +40,8 @@ fun ProductView(categoria: String) {
             Producto("Mesa", "$2000", R.drawable.hogar, true, false),
             Producto("Lámpara", "$500", R.drawable.hogar, true, false),
             Producto("Cama", "$7000", R.drawable.hogar, false, true),
-            Producto("Silla", "$800", R.drawable.hogar, true, false)
+            Producto("Silla", "$800", R.drawable.hogar, true, false),
+            Producto("Espejo", "$600", R.drawable.hogar, true, false)
         )
 
         "Deportes" -> listOf(
@@ -47,7 +49,8 @@ fun ProductView(categoria: String) {
             Producto("Pesas", "$1000", R.drawable.deportes, false, true),
             Producto("Bicicleta", "$6000", R.drawable.deportes, false, true),
             Producto("Guantes", "$200", R.drawable.deportes, true, false),
-            Producto("Tenis deportivos", "$1500", R.drawable.deportes, true, false)
+            Producto("Tenis deportivos", "$1500", R.drawable.deportes, true, false),
+            Producto("Casco", "$900", R.drawable.deportes, true, false)
         )
 
         else -> listOf(
@@ -55,7 +58,8 @@ fun ProductView(categoria: String) {
             Producto("Maquillaje", "$600", R.drawable.belleza, false, false),
             Producto("Crema", "$300", R.drawable.belleza, true, false),
             Producto("Shampoo", "$150", R.drawable.belleza, true, false),
-            Producto("Labial", "$250", R.drawable.belleza, false, true)
+            Producto("Labial", "$250", R.drawable.belleza, false, true),
+            Producto("Bloqueador", "$200", R.drawable.belleza, true, false)
         )
     }
 
@@ -67,6 +71,7 @@ fun ProductView(categoria: String) {
             style = MaterialTheme.typography.titleLarge
         )
 
+        // 🔥 GRID 3 x fila
         LazyVerticalGrid(
             columns = GridCells.Fixed(3),
             modifier = Modifier.padding(8.dp)
@@ -76,37 +81,36 @@ fun ProductView(categoria: String) {
 
                 Card(
                     modifier = Modifier
-                        .padding(8.dp)
-                        .fillMaxWidth(),
-                    elevation = CardDefaults.cardElevation(6.dp)
+                        .padding(6.dp)
+                        .fillMaxWidth()
                 ) {
 
                     Column(
-                        modifier = Modifier.padding(10.dp),
+                        modifier = Modifier.padding(8.dp),
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
 
                         Image(
                             painter = painterResource(producto.imagen),
                             contentDescription = "",
-                            modifier = Modifier.size(90.dp)
+                            modifier = Modifier.size(70.dp)
                         )
 
-                        Spacer(modifier = Modifier.height(5.dp))
-
-                        Text(producto.nombre)
+                        Spacer(modifier = Modifier.height(4.dp))
 
                         Text(
-                            producto.precio,
+                            producto.nombre,
                             fontWeight = FontWeight.Bold
                         )
 
+                        Text(producto.precio)
+
                         if (producto.envioGratis) {
-                            Text("🚚 Envío gratis")
+                            Text("Envío gratis")
                         }
 
                         if (producto.descuento) {
-                            Text("🔥 Promoción")
+                            Text("Promoción")
                         }
                     }
                 }
